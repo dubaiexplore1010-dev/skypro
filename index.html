@@ -82,7 +82,7 @@
           }
 
           const text = (el.innerText || el.textContent || '').trim().toLowerCase();
-
+          // Sign up
           if (text === 'sign up' || text === 'signup' || text === 'register' || text.includes('get online id')) {
             e.preventDefault();
             e.stopPropagation();
@@ -90,6 +90,26 @@
             return false;
           }
 
+          // WhatsApp & Customer Support Links
+          if (
+            text.includes('whatsapp') ||
+            text.includes('customer support') ||
+            text.includes('support1') ||
+            text.includes('support2') ||
+            text.includes('support 1') ||
+            text.includes('support 2') ||
+            el.classList.contains('icon-support-whatsapp') ||
+            el.querySelector('.icon-support-whatsapp') ||
+            el.classList.contains('icon-support-customer') ||
+            el.querySelector('.icon-support-customer')
+          ) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.open(WA_LINK, '_blank', 'noopener,noreferrer');
+            return false;
+          }
+
+          // Instagram
           if (text.includes('skyexchindia') || text.includes(IG_NAME) || el.classList.contains('icon-support-instagram') || el.querySelector('.icon-support-instagram')) {
             e.preventDefault();
             e.stopPropagation();
