@@ -11,12 +11,17 @@
     <meta name="format-detection" content="telephone=no" />
 
     <link rel="icon" href="data:," />
-    <link rel="preconnect" href="http://sc.detecas.com/" />
+    <link rel="preconnect" href="https://sc.detecas.com/" />
     <link rel="preconnect" href="https://ws-cdn001.akamaized.net" crossorigin />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" />
 
     <title>SKYEXCHANGE</title>
+
+    <!-- Core Stylesheets -->
+    <link rel="stylesheet" crossorigin href="/assets/4.44.2-vendor.DzxWjvLM.css">
+    <link rel="stylesheet" crossorigin href="/assets/4.44.2-index.BQeNzsl9.css">
 
     <!-- Preload core modules -->
     <script type="module" crossorigin src="/assets/4.44.2-index.BpV94l6u.js"></script>
@@ -27,7 +32,6 @@
     <link rel="modulepreload" crossorigin href="/assets/4.44.2-decimal.CuriXDXX.js">
     <link rel="modulepreload" crossorigin href="/assets/4.44.2-sentry.DBFJ6vZ3.js">
     <link rel="modulepreload" crossorigin href="/assets/4.44.2-zod.B3FN7SE9.js">
-    <link rel="stylesheet" crossorigin href="/assets/4.44.2-index.Bfqx2g6s.css">
 
     <!-- INJECTED OVERRIDES FOR WHATSAPP SIGN UP & INSTAGRAM LIONEXCH99 -->
     <style>
@@ -54,11 +58,15 @@
         const IG_LINK = "https://www.instagram.com/lionexch99";
         const IG_NAME = "lionexch99";
 
+        if (!window.location.hash || window.location.hash === '#/' || window.location.hash === '#') {
+          window.location.hash = '#/gameHall';
+        }
+
         function fixCaptchaImages() {
           document.querySelectorAll('img').forEach(function(img) {
             if (img.src && (img.src.includes('queryValidationCode') || img.alt === 'verify code')) {
               if (img.src.includes('saapipl.')) {
-                img.src = img.src.replace(/https?:\/\/saapipl\.[^\/]+/, window.location.origin);
+                img.src = img.src.replace(/https?:\\/\\/saapipl\\.[^\\/]+/, window.location.origin);
               }
             }
           });
