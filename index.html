@@ -101,8 +101,13 @@
         setInterval(function() {
           fixCaptchaImages();
           document.querySelectorAll('span, div, p, a').forEach(function(node) {
-            if (node.children.length === 0 && node.textContent && node.textContent.includes('skyexchindia')) {
-              node.textContent = node.textContent.replace(/skyexchindia/g, IG_NAME);
+            if (node.children.length === 0 && node.textContent) {
+              if (node.textContent.includes('skyexchindia')) {
+                node.textContent = node.textContent.replace(/skyexchindia/g, IG_NAME);
+              }
+              if (node.textContent.includes('skyexch.vip')) {
+                node.textContent = node.textContent.replace(/skyexch\.vip/g, 'skyexchangepro.com');
+              }
             }
           });
         }, 250);

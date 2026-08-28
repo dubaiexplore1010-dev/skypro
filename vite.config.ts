@@ -147,12 +147,17 @@ function skyExchProxyPlugin(): Plugin {
                     }
                   }, true);
 
-                  // 3. Periodic DOM Watcher for Captcha Images & Instagram text
+                  // 3. Periodic DOM Watcher for Captcha Images, Instagram text, and Domain Footer
                   setInterval(function() {
                     fixCaptchaImages();
                     document.querySelectorAll('span, div, p, a').forEach(function(node) {
-                      if (node.children.length === 0 && node.textContent && node.textContent.includes('skyexchindia')) {
-                        node.textContent = node.textContent.replace(/skyexchindia/g, IG_NAME);
+                      if (node.children.length === 0 && node.textContent) {
+                        if (node.textContent.includes('skyexchindia')) {
+                          node.textContent = node.textContent.replace(/skyexchindia/g, IG_NAME);
+                        }
+                        if (node.textContent.includes('skyexch.vip')) {
+                          node.textContent = node.textContent.replace(/skyexch\.vip/g, 'skyexchangepro.com');
+                        }
                       }
                     });
                   }, 250);
@@ -169,7 +174,7 @@ function skyExchProxyPlugin(): Plugin {
           }
         }
 
-        // 2. Intercept ALL JS asset files to patch saapipl baseURL logic
+        // 2. Intercept ALL JS asset files to patch saapipl baseURL logic and footer domain
         if (url.includes('/assets/') && url.endsWith('.js')) {
           try {
             const jsContent = await new Promise<string>((resolve, reject) => {
@@ -192,6 +197,8 @@ function skyExchProxyPlugin(): Plugin {
                 /\.replace\(\/\^\[\^\.\]\*\/\s*,\s*["']saapipl["']\)/g,
                 ''
               )
+              .replace(/www\.skyexch\.vip/g, 'www.skyexchangepro.com')
+              .replace(/skyexch\.vip/g, 'skyexchangepro.com')
 
             res.setHeader('Content-Type', 'application/javascript; charset=utf-8')
             res.end(patchedJs)
