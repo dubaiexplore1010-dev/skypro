@@ -24,8 +24,8 @@ export default function AdminScreen() {
   const [footerDomain, setFooterDomain] = useState('www.skyexchangepro.com');
   const [support1, setSupport1] = useState('+351926917651');
   const [support2, setSupport2] = useState('+351926917279');
-  const [banner1, setBanner1] = useState('/banner.jpeg');
-  const [banner2, setBanner2] = useState('/images.jpeg');
+  const [banner1, setBanner1] = useState('');
+  const [banner2, setBanner2] = useState('');
 
   const [uploading1, setUploading1] = useState(false);
   const [uploading2, setUploading2] = useState(false);
@@ -154,8 +154,8 @@ export default function AdminScreen() {
       footer_domain: footerDomain.trim(),
       support_number_1: support1.trim(),
       support_number_2: support2.trim(),
-      banner_1_url: banner1.trim() || '/banner.jpeg',
-      banner_2_url: banner2.trim() || '/images.jpeg',
+      banner_1_url: banner1.trim(),
+      banner_2_url: banner2.trim(),
       updated_at: nowIso,
     };
 

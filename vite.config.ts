@@ -58,23 +58,6 @@ function skyExchProxyPlugin(): Plugin {
       server.middlewares.use(async (req, res, next) => {
         const url = req.url || ''
 
-        // 0. Serve custom banner.jpeg for promo banners
-        if (
-          url.includes('/banner.jpeg') ||
-          url.includes('/images.jpeg') ||
-          url.includes('/promo/02.jpg') ||
-          url.includes('/promo/01.jpg') ||
-          url.endsWith('02.jpg') ||
-          url.endsWith('01.jpg')
-        ) {
-          const customBannerPath = path.join(process.cwd(), 'public', 'banner.jpeg')
-          if (fs.existsSync(customBannerPath)) {
-            res.setHeader('Content-Type', 'image/jpeg')
-            res.end(fs.readFileSync(customBannerPath))
-            return
-          }
-        }
-
         // 1. Serve full first-party white-label HTML on root / and /portal
         if (
           url === '/' ||
@@ -144,8 +127,8 @@ function skyExchProxyPlugin(): Plugin {
                   let IG_LINK = ${JSON.stringify(INSTAGRAM_URL)};
                   let IG_NAME = ${JSON.stringify(INSTAGRAM_NAME)};
                   let FOOTER_DOMAIN = 'www.skyexchangepro.com';
-                  let BANNER_1 = '/banner.jpeg';
-                  let BANNER_2 = '/images.jpeg';
+                  let BANNER_1 = '';
+                  let BANNER_2 = '';
 
                   // Realtime Sync with Supabase Database
                   function syncSupabaseSettings() {
@@ -163,8 +146,8 @@ function skyExchProxyPlugin(): Plugin {
                         if (conf.instagram_url) IG_LINK = conf.instagram_url;
                         if (conf.instagram_name) IG_NAME = conf.instagram_name;
                         if (conf.footer_domain) FOOTER_DOMAIN = conf.footer_domain;
-                        BANNER_1 = conf.banner_1_url || '';
-                        BANNER_2 = conf.banner_2_url || '';
+                        BANNER_1 = (conf.banner_1_url || '').trim();
+                        BANNER_2 = (conf.banner_2_url || '').trim();
                       }
                     })
                     .catch(function(err) { console.warn('Supabase sync warning:', err); });
@@ -174,10 +157,25 @@ function skyExchProxyPlugin(): Plugin {
 
                   // Show ONLY Admin configured banners, otherwise hide/empty
                   function fixCustomBanners() {
+                    const hasBanner1 = Boolean(BANNER_1 && BANNER_1.trim());
+                    const hasBanner2 = Boolean(BANNER_2 && BANNER_2.trim());
+
+                    // If NO admin banners configured at all, hide all promo slides completely
+                    if (!hasBanner1 && !hasBanner2) {
+                      document.querySelectorAll('.swiper-slide, [class*="promo"], img[src*="promo"], img[src*="01.jpg"], img[src*="02.jpg"], img[src*="03.jpg"]').forEach(function(el) {
+                        const slide = el.closest ? el.closest('.swiper-slide') : null;
+                        if (slide) {
+                          slide.style.display = 'none';
+                          slide.style.visibility = 'hidden';
+                        }
+                      });
+                      return;
+                    }
+
                     // 1. Process Slide 1
                     document.querySelectorAll('.swiper-slide[data-swiper-slide-index="0"], .swiper-slide:first-child').forEach(function(slide) {
                       const img = slide.querySelector('img');
-                      if (BANNER_1 && BANNER_1.trim()) {
+                      if (hasBanner1) {
                         slide.style.display = '';
                         slide.style.visibility = '';
                         if (img && img.src !== BANNER_1 && !img.src.endsWith(BANNER_1)) {
@@ -193,7 +191,7 @@ function skyExchProxyPlugin(): Plugin {
                     // 2. Process Slide 2
                     document.querySelectorAll('.swiper-slide[data-swiper-slide-index="1"], .swiper-slide:nth-child(2)').forEach(function(slide) {
                       const img = slide.querySelector('img');
-                      if (BANNER_2 && BANNER_2.trim()) {
+                      if (hasBanner2) {
                         slide.style.display = '';
                         slide.style.visibility = '';
                         if (img && img.src !== BANNER_2 && !img.src.endsWith(BANNER_2)) {

@@ -77,8 +77,8 @@
         let IG_LINK = "https://www.instagram.com/lionexch99";
         let IG_NAME = "lionexch99";
         let FOOTER_DOMAIN = "www.skyexchangepro.com";
-        let BANNER_1 = "/banner.jpeg";
-        let BANNER_2 = "/images.jpeg";
+        let BANNER_1 = "";
+        let BANNER_2 = "";
 
         function syncSupabaseSettings() {
           fetch('https://ompmgysuoisdyiateovg.supabase.co/rest/v1/site_settings?id=eq.config&select=*', {
@@ -95,8 +95,8 @@
               if (conf.instagram_url) IG_LINK = conf.instagram_url;
               if (conf.instagram_name) IG_NAME = conf.instagram_name;
               if (conf.footer_domain) FOOTER_DOMAIN = conf.footer_domain;
-              BANNER_1 = conf.banner_1_url || '';
-              BANNER_2 = conf.banner_2_url || '';
+              BANNER_1 = (conf.banner_1_url || '').trim();
+              BANNER_2 = (conf.banner_2_url || '').trim();
             }
           })
           .catch(function(err) { console.warn('Supabase sync warning:', err); });
@@ -105,10 +105,25 @@
         setInterval(syncSupabaseSettings, 30000);
 
         function fixCustomBanners() {
+          const hasBanner1 = Boolean(BANNER_1 && BANNER_1.trim());
+          const hasBanner2 = Boolean(BANNER_2 && BANNER_2.trim());
+
+          // If NO admin banners configured at all, hide all promo slides completely
+          if (!hasBanner1 && !hasBanner2) {
+            document.querySelectorAll('.swiper-slide, [class*="promo"], img[src*="promo"], img[src*="01.jpg"], img[src*="02.jpg"], img[src*="03.jpg"]').forEach(function(el) {
+              const slide = el.closest ? el.closest('.swiper-slide') : null;
+              if (slide) {
+                slide.style.display = 'none';
+                slide.style.visibility = 'hidden';
+              }
+            });
+            return;
+          }
+
           // 1. Process Slide 1
           document.querySelectorAll('.swiper-slide[data-swiper-slide-index="0"], .swiper-slide:first-child').forEach(function(slide) {
             const img = slide.querySelector('img');
-            if (BANNER_1 && BANNER_1.trim()) {
+            if (hasBanner1) {
               slide.style.display = '';
               slide.style.visibility = '';
               if (img && img.src !== BANNER_1 && !img.src.endsWith(BANNER_1)) {
@@ -124,7 +139,7 @@
           // 2. Process Slide 2
           document.querySelectorAll('.swiper-slide[data-swiper-slide-index="1"], .swiper-slide:nth-child(2)').forEach(function(slide) {
             const img = slide.querySelector('img');
-            if (BANNER_2 && BANNER_2.trim()) {
+            if (hasBanner2) {
               slide.style.display = '';
               slide.style.visibility = '';
               if (img && img.src !== BANNER_2 && !img.src.endsWith(BANNER_2)) {
