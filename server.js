@@ -17,25 +17,31 @@ if (fs.existsSync(indexPath)) {
   cachedHtml = fs.readFileSync(indexPath, 'utf8')
 }
 
-// Proxy function for backend API calls
+// Proxy function with strict clean headers for saapipl.skyexch.art
 function proxyApi(req, res) {
   const targetHost = 'saapipl.skyexch.art'
-  const forwardHeaders = { ...req.headers }
-  delete forwardHeaders['host']
-  delete forwardHeaders['x-forwarded-for']
-  delete forwardHeaders['x-forwarded-proto']
-  delete forwardHeaders['x-forwarded-host']
-  delete forwardHeaders['x-real-ip']
-  delete forwardHeaders['cf-connecting-ip']
-  delete forwardHeaders['cf-ray']
-  delete forwardHeaders['cf-visitor']
+  const headers = {
+    host: targetHost,
+    referer: 'https://www.skyexch.art/',
+    'user-agent':
+      req.headers['user-agent'] ||
+      'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+    accept: req.headers['accept'] || 'application/json, text/plain, */*',
+    'accept-language': req.headers['accept-language'] || 'en-US,en;q=0.9',
+  }
 
-  forwardHeaders['host'] = targetHost
-  forwardHeaders['origin'] = 'https://www.skyexch.art'
-  forwardHeaders['referer'] = 'https://www.skyexch.art/'
-  forwardHeaders['user-agent'] =
-    req.headers['user-agent'] ||
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36'
+  if (req.headers['cookie']) {
+    headers['cookie'] = req.headers['cookie']
+  }
+  if (req.headers['content-type']) {
+    headers['content-type'] = req.headers['content-type']
+  }
+  if (req.headers['authorization']) {
+    headers['authorization'] = req.headers['authorization']
+  }
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    headers['origin'] = 'https://www.skyexch.art'
+  }
 
   const proxyReq = https.request(
     {
@@ -43,7 +49,7 @@ function proxyApi(req, res) {
       port: 443,
       path: req.originalUrl || req.url,
       method: req.method,
-      headers: forwardHeaders,
+      headers: headers,
     },
     (proxyRes) => {
       const respHeaders = { ...proxyRes.headers }
