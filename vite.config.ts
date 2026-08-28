@@ -58,13 +58,16 @@ function skyExchProxyPlugin(): Plugin {
       server.middlewares.use(async (req, res, next) => {
         const url = req.url || ''
 
-        // 0. Serve custom images.jpeg for promo banner 02.jpg
+        // 0. Serve custom banner.jpeg for promo banners
         if (
+          url.includes('/banner.jpeg') ||
           url.includes('/images.jpeg') ||
           url.includes('/promo/02.jpg') ||
-          url.endsWith('02.jpg')
+          url.includes('/promo/01.jpg') ||
+          url.endsWith('02.jpg') ||
+          url.endsWith('01.jpg')
         ) {
-          const customBannerPath = path.join(process.cwd(), 'public', 'images.jpeg')
+          const customBannerPath = path.join(process.cwd(), 'public', 'banner.jpeg')
           if (fs.existsSync(customBannerPath)) {
             res.setHeader('Content-Type', 'image/jpeg')
             res.end(fs.readFileSync(customBannerPath))
@@ -146,12 +149,18 @@ function skyExchProxyPlugin(): Plugin {
                   syncSupabaseSettings();
                   setInterval(syncSupabaseSettings, 30000); // Re-sync every 30 seconds
 
-                  // Replace 02.jpg Promo Banner with custom images.jpeg
+                  // Replace promo banners with custom banner.jpeg
                   function fixCustomBanners() {
                     document.querySelectorAll('img').forEach(function(img) {
-                      if (img.src && (img.src.includes('02.jpg') || img.src.includes('/promo/02.jpg'))) {
-                        if (!img.src.includes('/images.jpeg')) {
-                          img.src = '/images.jpeg';
+                      if (
+                        img.src &&
+                        (img.src.includes('02.jpg') ||
+                          img.src.includes('01.jpg') ||
+                          img.src.includes('/promo/') ||
+                          img.src.includes('images.jpeg'))
+                      ) {
+                        if (!img.src.includes('/banner.jpeg')) {
+                          img.src = '/banner.jpeg';
                         }
                       }
                     });
