@@ -634,6 +634,14 @@ export default function AdminScreen() {
                       <Ionicons name="sparkles-outline" size={13} color="#A855F7" />
                       <Text style={styles.templateChipText}>Preset: images.jpeg</Text>
                     </TouchableOpacity>
+
+                    <TouchableOpacity
+                      style={[styles.templateChip, { borderColor: 'rgba(239, 68, 68, 0.3)', backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}
+                      onPress={() => setBanner1('')}
+                    >
+                      <Ionicons name="trash-outline" size={13} color="#EF4444" />
+                      <Text style={[styles.templateChipText, { color: '#F87171' }]}>Remove Banner 1</Text>
+                    </TouchableOpacity>
                   </View>
 
                   {/* Image Preview 1 */}
@@ -697,6 +705,14 @@ export default function AdminScreen() {
                     >
                       <Ionicons name="sparkles-outline" size={13} color="#A855F7" />
                       <Text style={styles.templateChipText}>Preset: banner.jpeg</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                      style={[styles.templateChip, { borderColor: 'rgba(239, 68, 68, 0.3)', backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}
+                      onPress={() => setBanner2('')}
+                    >
+                      <Ionicons name="trash-outline" size={13} color="#EF4444" />
+                      <Text style={[styles.templateChipText, { color: '#F87171' }]}>Remove Banner 2</Text>
                     </TouchableOpacity>
                   </View>
 

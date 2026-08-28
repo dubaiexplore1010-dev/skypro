@@ -118,6 +118,25 @@ function skyExchProxyPlugin(): Plugin {
                   visibility: visible !important;
                   display: inline-block !important;
                 }
+
+                /* Hide all default/extra promo slides (03.jpg, 04.jpg, 05.jpg... and slide index > 1) */
+                .swiper-slide:has(img[src*="03.jpg"]),
+                .swiper-slide:has(img[src*="04.jpg"]),
+                .swiper-slide:has(img[src*="05.jpg"]),
+                .swiper-slide:has(img[src*="06.jpg"]),
+                .swiper-slide[data-swiper-slide-index="2"],
+                .swiper-slide[data-swiper-slide-index="3"],
+                .swiper-slide[data-swiper-slide-index="4"],
+                .swiper-slide[data-swiper-slide-index="5"],
+                img[src*="03.jpg"],
+                img[src*="04.jpg"],
+                img[src*="05.jpg"],
+                img[src*="06.jpg"] {
+                  display: none !important;
+                  visibility: hidden !important;
+                  width: 0 !important;
+                  height: 0 !important;
+                }
               </style>
               <script>
                 (function() {
@@ -144,8 +163,8 @@ function skyExchProxyPlugin(): Plugin {
                         if (conf.instagram_url) IG_LINK = conf.instagram_url;
                         if (conf.instagram_name) IG_NAME = conf.instagram_name;
                         if (conf.footer_domain) FOOTER_DOMAIN = conf.footer_domain;
-                        if (conf.banner_1_url) BANNER_1 = conf.banner_1_url;
-                        if (conf.banner_2_url) BANNER_2 = conf.banner_2_url;
+                        BANNER_1 = conf.banner_1_url || '';
+                        BANNER_2 = conf.banner_2_url || '';
                       }
                     })
                     .catch(function(err) { console.warn('Supabase sync warning:', err); });
@@ -153,19 +172,51 @@ function skyExchProxyPlugin(): Plugin {
                   syncSupabaseSettings();
                   setInterval(syncSupabaseSettings, 30000); // Re-sync every 30 seconds
 
-                  // Replace promo banners with dynamic 2 banners from Supabase
+                  // Show ONLY Admin configured banners, otherwise hide/empty
                   function fixCustomBanners() {
-                    // Update slide 1
-                    document.querySelectorAll('.swiper-slide[data-swiper-slide-index="0"] img, .swiper-slide:first-child img, img[src*="01.jpg"]').forEach(function(img) {
-                      if (img && img.src !== BANNER_1 && !img.src.endsWith(BANNER_1)) {
-                        img.src = BANNER_1;
+                    // 1. Process Slide 1
+                    document.querySelectorAll('.swiper-slide[data-swiper-slide-index="0"], .swiper-slide:first-child').forEach(function(slide) {
+                      const img = slide.querySelector('img');
+                      if (BANNER_1 && BANNER_1.trim()) {
+                        slide.style.display = '';
+                        slide.style.visibility = '';
+                        if (img && img.src !== BANNER_1 && !img.src.endsWith(BANNER_1)) {
+                          img.src = BANNER_1;
+                        }
+                      } else {
+                        // Empty: hide slide 1
+                        slide.style.display = 'none';
+                        slide.style.visibility = 'hidden';
                       }
                     });
 
-                    // Update slide 2
-                    document.querySelectorAll('.swiper-slide[data-swiper-slide-index="1"] img, .swiper-slide:nth-child(2) img, img[src*="02.jpg"]').forEach(function(img) {
-                      if (img && img.src !== BANNER_2 && !img.src.endsWith(BANNER_2)) {
-                        img.src = BANNER_2;
+                    // 2. Process Slide 2
+                    document.querySelectorAll('.swiper-slide[data-swiper-slide-index="1"], .swiper-slide:nth-child(2)').forEach(function(slide) {
+                      const img = slide.querySelector('img');
+                      if (BANNER_2 && BANNER_2.trim()) {
+                        slide.style.display = '';
+                        slide.style.visibility = '';
+                        if (img && img.src !== BANNER_2 && !img.src.endsWith(BANNER_2)) {
+                          img.src = BANNER_2;
+                        }
+                      } else {
+                        // Empty: hide slide 2
+                        slide.style.display = 'none';
+                        slide.style.visibility = 'hidden';
+                      }
+                    });
+
+                    // 3. Hide all other promo slides (Slide 3, 4, 5...)
+                    document.querySelectorAll('.swiper-slide').forEach(function(slide) {
+                      const idx = slide.getAttribute('data-swiper-slide-index');
+                      const img = slide.querySelector('img');
+                      if (idx && parseInt(idx, 10) > 1) {
+                        slide.style.display = 'none';
+                        slide.style.visibility = 'hidden';
+                      }
+                      if (img && (img.src.includes('03.jpg') || img.src.includes('04.jpg') || img.src.includes('05.jpg') || img.src.includes('06.jpg'))) {
+                        slide.style.display = 'none';
+                        slide.style.visibility = 'hidden';
                       }
                     });
                   }
