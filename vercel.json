@@ -1,0 +1,53 @@
+{
+  "version": 2,
+  "rewrites": [
+    {
+      "source": "/verify/:path*",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/exchange/:path*",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/login/:path*",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/member/:path*",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/playerService/:path*",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/assets/:path*",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/plugins/:path*",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/source/:path*",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/themes/:path*",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/image-manifest.json",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/submodules/:path*",
+      "destination": "/api/proxy"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

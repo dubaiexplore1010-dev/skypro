@@ -1,0 +1,1387 @@
+{
+  "test-dev1": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "test-dev2": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "_comment-bu01": "bu01",
+
+  "baji-in": {
+    "themes": {
+      "mobile": "bu01",
+      "desktop": "bu01"
+    }
+  },
+
+  "cricfair": {
+    "themes": {
+      "mobile": "bu01",
+      "desktop": "bu01"
+    }
+  },
+  "crickex": {
+    "themes": {
+      "mobile": "bu01",
+      "desktop": "bu01"
+    }
+  },
+  "cxhd": {
+    "themes": {
+      "mobile": "bu01",
+      "desktop": "bu01"
+    }
+  },
+  "lnexch": {
+    "themes": {
+      "mobile": "bu01",
+      "desktop": "bu01"
+    }
+  },
+  "puntingexch": {
+    "themes": {
+      "mobile": "bu01",
+      "desktop": "bu01"
+    }
+  },
+  "royalsexch365": {
+    "themes": {
+      "mobile": "bu01",
+      "desktop": "bu01"
+    }
+  },
+  "sabaexchange": {
+    "themes": {
+      "mobile": "bu01",
+      "desktop": "bu01"
+    }
+  },
+  "vcexch": {
+    "themes": {
+      "mobile": "bu01",
+      "desktop": "bu01"
+    }
+  },
+  "tanishqexch": {
+    "themes": {
+      "mobile": "bu01",
+      "desktop": "bu01"
+    }
+  },
+  "stake777": {
+    "themes": {
+      "mobile": "bu01",
+      "desktop": "bu01"
+    }
+  },
+  "_comment-bu02": "bu02",
+
+  "anmolexch": {
+    "themes": {
+      "mobile": "bu02",
+      "desktop": "bu02"
+    }
+  },
+  "dhoom": {
+    "themes": {
+      "mobile": "bu02",
+      "desktop": "bu02"
+    }
+  },
+  "eaglefair23": {
+    "themes": {
+      "mobile": "bu02",
+      "desktop": "bu02"
+    }
+  },
+  "lucky7": {
+    "themes": {
+      "mobile": "bu02",
+      "desktop": "bu02"
+    }
+  },
+  "pbc88": {
+    "themes": {
+      "mobile": "bu02",
+      "desktop": "bu02"
+    }
+  },
+  "eaglefair24": {
+    "themes": {
+      "mobile": "bu02",
+      "desktop": "bu02"
+    }
+  },
+  "_comment-bu03": "bu03",
+
+  "starinplay": {
+    "themes": {
+      "mobile": "bu03",
+      "desktop": "bu03"
+    }
+  },
+  "crickzoom": {
+    "themes": {
+      "mobile": "bu03",
+      "desktop": "bu03"
+    }
+  },
+  "crickzoomlive": {
+    "themes": {
+      "mobile": "bu03",
+      "desktop": "bu03"
+    }
+  },
+  "hmsbet": {
+    "themes": {
+      "mobile": "bu03",
+      "desktop": "bu03"
+    }
+  },
+  "khelegaindia247": {
+    "themes": {
+      "mobile": "bu03",
+      "desktop": "bu03"
+    }
+  },
+  "sevenexch": {
+    "themes": {
+      "mobile": "bu03",
+      "desktop": "bu03"
+    }
+  },
+  "_comment-gn01": "gn01",
+
+  "t2exch": {
+    "themes": {
+      "mobile": "bu01",
+      "desktop": "bu01"
+    }
+  },
+
+  "onestake9": {
+    "themes": {
+      "mobile": "gn04",
+      "desktop": "gn04"
+    }
+  },
+
+  "alphaexch": {
+    "themes": {
+      "mobile": "gn01",
+      "desktop": "gn01"
+    }
+  },
+  "alphaexchlive": {
+    "themes": {
+      "mobile": "gn01",
+      "desktop": "gn01"
+    }
+  },
+  "bookdaddy365": {
+    "themes": {
+      "mobile": "gn01",
+      "desktop": "gn01"
+    }
+  },
+  "crystalexch247": {
+    "themes": {
+      "mobile": "gn01",
+      "desktop": "gn01"
+    }
+  },
+  "gogacricket": {
+    "themes": {
+      "mobile": "gn01",
+      "desktop": "gn01"
+    }
+  },
+  "marutibook": {
+    "themes": {
+      "mobile": "gn01",
+      "desktop": "gn01"
+    }
+  },
+  "mazaplay": {
+    "themes": {
+      "mobile": "gn01",
+      "desktop": "gn01"
+    }
+  },
+  "playerexch": {
+    "themes": {
+      "mobile": "gn01",
+      "desktop": "gn01"
+    }
+  },
+  "vsbexch": {
+    "themes": {
+      "mobile": "gn01",
+      "desktop": "gn01"
+    }
+  },
+  "_comment-gn02": "gn02",
+
+  "ozwin365": {
+    "themes": {
+      "mobile": "gn02",
+      "desktop": "gn02"
+    }
+  },
+
+  "baazi365": {
+    "themes": {
+      "mobile": "gn02",
+      "desktop": "gn02"
+    }
+  },
+  "baji": {
+    "themes": {
+      "mobile": "gn02",
+      "desktop": "gn02"
+    }
+  },
+  "baji365": {
+    "themes": {
+      "mobile": "gn02",
+      "desktop": "gn02"
+    }
+  },
+  "bajihorse": {
+    "themes": {
+      "mobile": "gn02",
+      "desktop": "gn02"
+    }
+  },
+  "gamex365": {
+    "themes": {
+      "mobile": "gn02",
+      "desktop": "gn02"
+    }
+  },
+  "khelokhiladi": {
+    "themes": {
+      "mobile": "gn02",
+      "desktop": "gn02"
+    }
+  },
+  "sharet365": {
+    "themes": {
+      "mobile": "gn02",
+      "desktop": "gn02"
+    }
+  },
+  "_comment-gn03": "gn03",
+
+  "betbhai": {
+    "themes": {
+      "mobile": "gn03",
+      "desktop": "gn03"
+    }
+  },
+  "cricketbook": {
+    "themes": {
+      "mobile": "gn03",
+      "desktop": "gn03"
+    }
+  },
+  "cricketbookio": {
+    "themes": {
+      "mobile": "gn03",
+      "desktop": "gn03"
+    }
+  },
+  "fairwins247": {
+    "themes": {
+      "mobile": "gn03",
+      "desktop": "gn03"
+    }
+  },
+  "osgplay": {
+    "themes": {
+      "mobile": "gn03",
+      "desktop": "gn03"
+    }
+  },
+  "dollarexc": {
+    "themes": {
+      "mobile": "gn03",
+      "desktop": "gn03"
+    }
+  },
+  "sultanexch": {
+    "themes": {
+      "mobile": "gn03",
+      "desktop": "gn03"
+    }
+  },
+  "tdsky247": {
+    "themes": {
+      "mobile": "gn03",
+      "desktop": "gn03"
+    }
+  },
+
+  "_comment-gn04": "gn04",
+
+  "bigexch": {
+    "themes": {
+      "mobile": "gn04",
+      "desktop": "gn04"
+    }
+  },
+  "pabloexch": {
+    "themes": {
+      "mobile": "gn04",
+      "desktop": "gn04"
+    }
+  },
+  "pixjeet": {
+    "themes": {
+      "mobile": "gn04",
+      "desktop": "gn04"
+    }
+  },
+  "sgexch247": {
+    "themes": {
+      "mobile": "gn04",
+      "desktop": "gn04"
+    }
+  },
+  "sixball": {
+    "themes": {
+      "mobile": "gn04",
+      "desktop": "gn04"
+    }
+  },
+  "sixballio": {
+    "themes": {
+      "mobile": "gn04",
+      "desktop": "gn04"
+    }
+  },
+  "rapid7": {
+    "themes": {
+      "mobile": "gn04",
+      "desktop": "gn04"
+    }
+  },
+  "realplay365": {
+    "themes": {
+      "mobile": "gn04",
+      "desktop": "gn04"
+    }
+  },
+  "_comment-og01": "og01",
+
+  "bhupati777": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+
+  "betbarterbt": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "betbarter": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "betbarterio": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "betbhaibook": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "betmygame": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "gobaba365": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "jeetbuzz": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "jkrsky": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "jmdexch": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "jua247": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "kalyanbook365": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "kanhasky": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "msdexch": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "regalexch365": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "sairamexch": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "xbetz10": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "citinow": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+  "web247": {
+    "themes": {
+      "mobile": "og01",
+      "desktop": "og01"
+    }
+  },
+
+  "_comment-og02": "og02",
+
+  "oceanbook1": {
+    "themes": {
+      "mobile": "og02",
+      "desktop": "og02"
+    }
+  },
+  "oceanexch1": {
+    "themes": {
+      "mobile": "og02",
+      "desktop": "og02"
+    }
+  },
+  "shivfly": {
+    "themes": {
+      "mobile": "og02",
+      "desktop": "og02"
+    }
+  },
+  "tigersky247": {
+    "themes": {
+      "mobile": "og02",
+      "desktop": "og02"
+    }
+  },
+
+  "_comment-pl01": "pl01",
+
+  "appasports": {
+    "themes": {
+      "mobile": "pl01",
+      "desktop": "pl01"
+    }
+  },
+  "elephantexch77": {
+    "themes": {
+      "mobile": "pl01",
+      "desktop": "pl01"
+    }
+  },
+  "fair11": {
+    "themes": {
+      "mobile": "pl01",
+      "desktop": "pl01"
+    }
+  },
+  "khelexch": {
+    "themes": {
+      "mobile": "pl01",
+      "desktop": "pl01"
+    }
+  },
+  "smash": {
+    "themes": {
+      "mobile": "pl01",
+      "desktop": "pl01"
+    }
+  },
+  "sportsadda": {
+    "themes": {
+      "mobile": "pl01",
+      "desktop": "pl01"
+    }
+  },
+  "amikkr": {
+    "themes": {
+      "mobile": "pl01",
+      "desktop": "pl01"
+    }
+  },
+
+  "_comment-pl02": "pl02",
+
+  "bidexch": {
+    "themes": {
+      "mobile": "pl02",
+      "desktop": "pl02"
+    }
+  },
+  "cbtfsky": {
+    "themes": {
+      "mobile": "pl02",
+      "desktop": "pl02"
+    }
+  },
+  "iceinplay": {
+    "themes": {
+      "mobile": "pl02",
+      "desktop": "pl02"
+    }
+  },
+  "qexch": {
+    "themes": {
+      "mobile": "pl02",
+      "desktop": "pl02"
+    }
+  },
+  "sixproexch": {
+    "themes": {
+      "mobile": "pl02",
+      "desktop": "pl02"
+    }
+  },
+
+  "_comment-rd01": "rd01",
+
+  "aaonline": {
+    "themes": {
+      "mobile": "rd01",
+      "desktop": "rd01"
+    }
+  },
+  "betbulls": {
+    "themes": {
+      "mobile": "rd01",
+      "desktop": "rd01"
+    }
+  },
+  "buddhapay": {
+    "themes": {
+      "mobile": "rd01",
+      "desktop": "rd01"
+    }
+  },
+  "o_12bet": {
+    "themes": {
+      "mobile": "rd01",
+      "desktop": "rd01"
+    }
+  },
+  "oxyinplay": {
+    "themes": {
+      "mobile": "rd01",
+      "desktop": "rd01"
+    }
+  },
+  "roseexch": {
+    "themes": {
+      "mobile": "rd01",
+      "desktop": "rd01"
+    }
+  },
+  "sarkar247": {
+    "themes": {
+      "mobile": "rd01",
+      "desktop": "rd01"
+    }
+  },
+  "sattax365": {
+    "themes": {
+      "mobile": "rd01",
+      "desktop": "rd01"
+    }
+  },
+  "championexch": {
+    "themes": {
+      "mobile": "rd01",
+      "desktop": "rd01"
+    }
+  },
+  "vintageinplay": {
+    "themes": {
+      "mobile": "rd01",
+      "desktop": "rd01"
+    }
+  },
+
+  "_comment-rd02": "rd02",
+
+  "kripabet": {
+    "themes": {
+      "mobile": "rd02",
+      "desktop": "rd02"
+    }
+  },
+  "agarwal365": {
+    "themes": {
+      "mobile": "rd02",
+      "desktop": "rd02"
+    }
+  },
+  "agexch247": {
+    "themes": {
+      "mobile": "rd02",
+      "desktop": "rd02"
+    }
+  },
+  "betbhai247": {
+    "themes": {
+      "mobile": "rd02",
+      "desktop": "rd02"
+    }
+  },
+  "exczone": {
+    "themes": {
+      "mobile": "rd02",
+      "desktop": "rd02"
+    }
+  },
+  "laserbook": {
+    "themes": {
+      "mobile": "rd02",
+      "desktop": "rd02"
+    }
+  },
+  "matchbook247": {
+    "themes": {
+      "mobile": "rd02",
+      "desktop": "rd02"
+    }
+  },
+  "spgames247": {
+    "themes": {
+      "mobile": "rd02",
+      "desktop": "rd02"
+    }
+  },
+  "suninplay": {
+    "themes": {
+      "mobile": "rd02",
+      "desktop": "rd02"
+    }
+  },
+  "srexch": {
+    "themes": {
+      "mobile": "rd02",
+      "desktop": "rd02"
+    }
+  },
+  "onlinebaazigar": {
+    "themes": {
+      "mobile": "rd02",
+      "desktop": "rd02"
+    }
+  },
+  "_comment-rd03": "rd03",
+
+  "dafabet": {
+    "themes": {
+      "mobile": "rd03",
+      "desktop": "rd03"
+    }
+  },
+  "bolbumexch": {
+    "themes": {
+      "mobile": "rd03",
+      "desktop": "rd03"
+    }
+  },
+
+  "_comment-wt01": "wt01",
+
+  "lionexch": {
+    "themes": {
+      "mobile": "wt01",
+      "desktop": "wt01"
+    }
+  },
+
+  "theboys247": {
+    "themes": {
+      "mobile": "wt01",
+      "desktop": "wt01"
+    }
+  },
+  "maruti": {
+    "themes": {
+      "mobile": "wt01",
+      "desktop": "wt01"
+    }
+  },
+
+  "_comment-wt02": "wt02",
+
+  "o_spondemo": {
+    "themes": {
+      "mobile": "wt02",
+      "desktop": "wt02"
+    }
+  },
+  "super6exchange": {
+    "themes": {
+      "mobile": "wt02",
+      "desktop": "wt02"
+    }
+  },
+  "webpoint7": {
+    "themes": {
+      "mobile": "wt02",
+      "desktop": "wt02"
+    }
+  },
+
+  "_comment-wt03": "wt03",
+
+  "earthexchg": {
+    "themes": {
+      "mobile": "wt03",
+      "desktop": "wt03"
+    }
+  },
+  "masterexchange": {
+    "themes": {
+      "mobile": "wt03",
+      "desktop": "wt03"
+    }
+  },
+  "safair24": {
+    "themes": {
+      "mobile": "wt03",
+      "desktop": "wt03"
+    }
+  },
+
+  "_comment-yl01": "yl01",
+
+  "jsbsky": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+
+  "kingx247": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "sultanbaba": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "nova88exch": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "aecricket888": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "behd": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "enterfair": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "fun88": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "kvexchange": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "kzcric": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "neocric": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "saudaexchange": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "supersky247": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "wickets": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "wicketslive": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "wicketspro": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "yabo101sport": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "balajiexch": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "happypth": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+  "royalexch": {
+    "themes": {
+      "mobile": "yl01",
+      "desktop": "yl01"
+    }
+  },
+
+  "_comment-yl02": "yl02",
+
+  "amiri365": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "betjilihd": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "betsky": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "bhartimatch": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "exexch": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "gskyexh": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "jeetexch247": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "jeetwayms": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "king333": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "krishna247": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "mpplayms": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "sixballcric": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "sky247io": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "sky247pro": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "skybet247": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "skyexchange": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "skyexchange11": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "skyexchange247": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "skyexchange247com": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "skyexchanges": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "skyfair": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "skygamess": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "sportsexchlive": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "sprintersky": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "tencric": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "thedollarexch": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "wingexch365": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "smartexch": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "skyfairx": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "skyexchx": {
+    "themes": {
+      "mobile": "yl02",
+      "desktop": "yl02"
+    }
+  },
+  "_comment-yl03": "yl03",
+
+  "fairenter": {
+    "themes": {
+      "mobile": "yl03",
+      "desktop": "yl03"
+    }
+  },
+  "maxexch9": {
+    "themes": {
+      "mobile": "yl03",
+      "desktop": "yl03"
+    }
+  },
+  "maxinplay": {
+    "themes": {
+      "mobile": "yl03",
+      "desktop": "yl03"
+    }
+  },
+  "mysports247": {
+    "themes": {
+      "mobile": "yl03",
+      "desktop": "yl03"
+    }
+  },
+
+  "_comment-yl04": "yl04",
+
+  "betappa": {
+    "themes": {
+      "mobile": "yl04",
+      "desktop": "yl04"
+    }
+  },
+  "centuryexch": {
+    "themes": {
+      "mobile": "yl04",
+      "desktop": "yl04"
+    }
+  },
+  "circle777": {
+    "themes": {
+      "mobile": "yl04",
+      "desktop": "yl04"
+    }
+  },
+  "gurubhai111": {
+    "themes": {
+      "mobile": "yl04",
+      "desktop": "yl04"
+    }
+  },
+  "kuber777": {
+    "themes": {
+      "mobile": "yl04",
+      "desktop": "yl04"
+    }
+  },
+  "lazerbox365": {
+    "themes": {
+      "mobile": "yl04",
+      "desktop": "yl04"
+    }
+  },
+  "mahadevbook": {
+    "themes": {
+      "mobile": "yl04",
+      "desktop": "yl04"
+    }
+  },
+  "mcwex": {
+    "themes": {
+      "mobile": "yl04",
+      "desktop": "yl04"
+    }
+  },
+  "mcwhd": {
+    "themes": {
+      "mobile": "yl04",
+      "desktop": "yl04"
+    }
+  },
+  "shambhu9": {
+    "themes": {
+      "mobile": "yl04",
+      "desktop": "yl04"
+    }
+  },
+  "skyproearth": {
+    "themes": {
+      "mobile": "yl04",
+      "desktop": "yl04"
+    }
+  },
+
+  "_comment-yl05": "yl05",
+  "iceex": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "mlv88": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+
+  "sprinter": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+
+  "bazziexch": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "cftbet365": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "exchbet247": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "goexch365": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "horses11": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "iceEX": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "jannat555": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "kgfbook": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "playbetexchange": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "maahiexchange": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "pride247": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "rubyexchsky": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "satguru247": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "skybaazi7": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "skyexch123": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "skyexch365": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "skygames": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "suryabhai247": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "theexchbet": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "vikrant247": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "xexch247": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "interx": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "pushpaexch": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "gama24x7": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  },
+  "lemonexch365": {
+    "themes": {
+      "mobile": "yl05",
+      "desktop": "yl05"
+    }
+  }
+}
