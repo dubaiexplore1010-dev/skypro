@@ -71,5 +71,15 @@ TO anon, authenticated
 USING (true)
 WITH CHECK (true);
 
--- 5. Enable Realtime Publications (Optional for Instant Sync)
-ALTER PUBLICATION supabase_realtime ADD TABLE public.site_settings;
+-- 5. Enable Realtime Publications safely (handles duplicate error)
+DO $$
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1 FROM pg_publication_tables 
+        WHERE pubname = 'supabase_realtime' 
+        AND schemaname = 'public' 
+        AND tablename = 'site_settings'
+    ) THEN
+        ALTER PUBLICATION supabase_realtime ADD TABLE public.site_settings;
+    END IF;
+END $$;
