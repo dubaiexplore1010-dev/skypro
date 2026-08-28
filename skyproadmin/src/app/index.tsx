@@ -10,9 +10,11 @@ import {
   Alert,
   Linking,
   Platform,
+  Image,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 import { supabase, SiteSettings } from '../supabase';
 
 export default function AdminScreen() {
@@ -24,6 +26,9 @@ export default function AdminScreen() {
   const [support2, setSupport2] = useState('+351926917279');
   const [banner1, setBanner1] = useState('/banner.jpeg');
   const [banner2, setBanner2] = useState('/images.jpeg');
+
+  const [uploading1, setUploading1] = useState(false);
+  const [uploading2, setUploading2] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
@@ -87,6 +92,46 @@ export default function AdminScreen() {
       setTimeout(() => setCopiedField(null), 2200);
     } catch (e) {
       console.warn('Clipboard copy failed:', e);
+    }
+  };
+
+  const handlePickImage = async (target: 1 | 2) => {
+    try {
+      if (target === 1) setUploading1(true);
+      else setUploading2(true);
+
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ['images'],
+        allowsEditing: false,
+        quality: 0.85,
+        base64: true,
+      });
+
+      if (!result.canceled && result.assets && result.assets[0]) {
+        const asset = result.assets[0];
+        let finalUri = asset.uri;
+
+        if (asset.base64) {
+          const mime = asset.mimeType || 'image/jpeg';
+          finalUri = `data:${mime};base64,${asset.base64}`;
+        }
+
+        if (target === 1) {
+          setBanner1(finalUri);
+        } else {
+          setBanner2(finalUri);
+        }
+      }
+    } catch (err: any) {
+      console.error('Image pick error:', err);
+      if (Platform.OS === 'web') {
+        alert('Could not open image file: ' + err.message);
+      } else {
+        Alert.alert('Upload Error', err.message || 'Could not select image');
+      }
+    } finally {
+      if (target === 1) setUploading1(false);
+      else setUploading2(false);
     }
   };
 
@@ -544,7 +589,7 @@ export default function AdminScreen() {
                 <View style={styles.inputGroup}>
                   <View style={styles.labelRow}>
                     <Text style={styles.inputLabel}>BANNER 1 (PRIMARY SLIDE)</Text>
-                    <Text style={styles.inputHelper}>URL / Image Path</Text>
+                    <Text style={styles.inputHelper}>Device Upload or URL</Text>
                   </View>
                   <View style={styles.inputContainer}>
                     <Ionicons name="image" size={16} color="#64748B" style={styles.inputIcon} />
@@ -557,8 +602,23 @@ export default function AdminScreen() {
                     />
                   </View>
 
-                  {/* Preset Chips for Banner 1 */}
+                  {/* Upload & Preset Action Row for Banner 1 */}
                   <View style={styles.chipRow}>
+                    <TouchableOpacity
+                      style={[styles.templateChip, styles.uploadChip]}
+                      onPress={() => handlePickImage(1)}
+                      disabled={uploading1}
+                    >
+                      {uploading1 ? (
+                        <ActivityIndicator size="small" color="#A855F7" />
+                      ) : (
+                        <Ionicons name="cloud-upload" size={14} color="#A855F7" />
+                      )}
+                      <Text style={[styles.templateChipText, { color: '#C084FC', fontWeight: '700' }]}>
+                        {uploading1 ? 'Loading...' : 'Upload Image from Device'}
+                      </Text>
+                    </TouchableOpacity>
+
                     <TouchableOpacity
                       style={styles.templateChip}
                       onPress={() => setBanner1('/banner.jpeg')}
@@ -575,13 +635,25 @@ export default function AdminScreen() {
                       <Text style={styles.templateChipText}>Preset: images.jpeg</Text>
                     </TouchableOpacity>
                   </View>
+
+                  {/* Image Preview 1 */}
+                  {banner1 ? (
+                    <View style={styles.bannerPreviewBox}>
+                      <Text style={styles.previewBadge}>PREVIEW 1</Text>
+                      <Image
+                        source={{ uri: banner1.startsWith('/') ? `http://localhost:5173${banner1}` : banner1 }}
+                        style={styles.bannerThumbnail}
+                        resizeMode="cover"
+                      />
+                    </View>
+                  ) : null}
                 </View>
 
                 {/* Banner 2 */}
                 <View style={styles.inputGroup}>
                   <View style={styles.labelRow}>
                     <Text style={styles.inputLabel}>BANNER 2 (SECONDARY SLIDE)</Text>
-                    <Text style={styles.inputHelper}>URL / Image Path</Text>
+                    <Text style={styles.inputHelper}>Device Upload or URL</Text>
                   </View>
                   <View style={styles.inputContainer}>
                     <Ionicons name="image" size={16} color="#64748B" style={styles.inputIcon} />
@@ -594,8 +666,23 @@ export default function AdminScreen() {
                     />
                   </View>
 
-                  {/* Preset Chips for Banner 2 */}
+                  {/* Upload & Preset Action Row for Banner 2 */}
                   <View style={styles.chipRow}>
+                    <TouchableOpacity
+                      style={[styles.templateChip, styles.uploadChip]}
+                      onPress={() => handlePickImage(2)}
+                      disabled={uploading2}
+                    >
+                      {uploading2 ? (
+                        <ActivityIndicator size="small" color="#A855F7" />
+                      ) : (
+                        <Ionicons name="cloud-upload" size={14} color="#A855F7" />
+                      )}
+                      <Text style={[styles.templateChipText, { color: '#C084FC', fontWeight: '700' }]}>
+                        {uploading2 ? 'Loading...' : 'Upload Image from Device'}
+                      </Text>
+                    </TouchableOpacity>
+
                     <TouchableOpacity
                       style={styles.templateChip}
                       onPress={() => setBanner2('/images.jpeg')}
@@ -612,6 +699,18 @@ export default function AdminScreen() {
                       <Text style={styles.templateChipText}>Preset: banner.jpeg</Text>
                     </TouchableOpacity>
                   </View>
+
+                  {/* Image Preview 2 */}
+                  {banner2 ? (
+                    <View style={styles.bannerPreviewBox}>
+                      <Text style={styles.previewBadge}>PREVIEW 2</Text>
+                      <Image
+                        source={{ uri: banner2.startsWith('/') ? `http://localhost:5173${banner2}` : banner2 }}
+                        style={styles.bannerThumbnail}
+                        resizeMode="cover"
+                      />
+                    </View>
+                  ) : null}
                 </View>
               </View>
             </View>
@@ -1165,6 +1264,39 @@ const styles = StyleSheet.create({
     color: '#64748B',
     fontSize: 11,
     fontWeight: '500',
+  },
+  uploadChip: {
+    backgroundColor: 'rgba(168, 85, 247, 0.15)',
+    borderColor: 'rgba(168, 85, 247, 0.35)',
+  },
+  bannerPreviewBox: {
+    marginTop: 10,
+    borderRadius: 10,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: '#1e293b',
+    backgroundColor: '#05070c',
+    position: 'relative',
+  },
+  previewBadge: {
+    position: 'absolute',
+    top: 8,
+    left: 8,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    color: '#F8FAFC',
+    fontSize: 9,
+    fontWeight: '800',
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 4,
+    zIndex: 10,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.2)',
+  },
+  bannerThumbnail: {
+    width: '100%',
+    height: 120,
+    backgroundColor: '#0f172a',
   },
   saveContainer: {
     marginTop: 8,
