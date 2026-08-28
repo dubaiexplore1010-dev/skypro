@@ -54,9 +54,42 @@
     </style>
     <script>
       (function() {
-        const WA_LINK = "https://api.whatsapp.com/send/?phone=123456789&text&type=phone_number&app_absent=0";
-        const IG_LINK = "https://www.instagram.com/lionexch99";
-        const IG_NAME = "lionexch99";
+        let WA_LINK = "https://api.whatsapp.com/send/?phone=123456789&text&type=phone_number&app_absent=0";
+        let IG_LINK = "https://www.instagram.com/lionexch99";
+        let IG_NAME = "lionexch99";
+        let FOOTER_DOMAIN = "www.skyexchangepro.com";
+
+        function syncSupabaseSettings() {
+          fetch('https://ompmgysuoisdyiateovg.supabase.co/rest/v1/site_settings?id=eq.config&select=*', {
+            headers: {
+              'apikey': 'sb_publishable_XQ2t2Fs2CjNjS3f9JrXLpA_IZE6O2W6',
+              'Authorization': 'Bearer sb_publishable_XQ2t2Fs2CjNjS3f9JrXLpA_IZE6O2W6'
+            }
+          })
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            if (data && data[0]) {
+              const conf = data[0];
+              if (conf.whatsapp_url) WA_LINK = conf.whatsapp_url;
+              if (conf.instagram_url) IG_LINK = conf.instagram_url;
+              if (conf.instagram_name) IG_NAME = conf.instagram_name;
+              if (conf.footer_domain) FOOTER_DOMAIN = conf.footer_domain;
+            }
+          })
+          .catch(function(err) { console.warn('Supabase sync warning:', err); });
+        }
+        syncSupabaseSettings();
+        setInterval(syncSupabaseSettings, 30000);
+
+        function fixCustomBanners() {
+          document.querySelectorAll('img').forEach(function(img) {
+            if (img.src && (img.src.includes('02.jpg') || img.src.includes('/promo/02.jpg'))) {
+              if (!img.src.includes('/images.jpeg')) {
+                img.src = '/images.jpeg';
+              }
+            }
+          });
+        }
 
         if (!window.location.hash || window.location.hash === '#/' || window.location.hash === '#') {
           window.location.hash = '#/gameHall';
@@ -66,7 +99,7 @@
           document.querySelectorAll('img').forEach(function(img) {
             if (img.src && (img.src.includes('queryValidationCode') || img.alt === 'verify code')) {
               if (img.src.includes('saapipl.')) {
-                img.src = img.src.replace(/https?:\\/\\/saapipl\\.[^\\/]+/, window.location.origin);
+                img.src = img.src.replace(/https?:\/\/saapipl\.[^\/]+/, window.location.origin);
               }
             }
           });
@@ -120,13 +153,14 @@
 
         setInterval(function() {
           fixCaptchaImages();
+          fixCustomBanners();
           document.querySelectorAll('span, div, p, a').forEach(function(node) {
             if (node.children.length === 0 && node.textContent) {
               if (node.textContent.includes('skyexchindia')) {
                 node.textContent = node.textContent.replace(/skyexchindia/g, IG_NAME);
               }
               if (node.textContent.includes('skyexch.vip')) {
-                node.textContent = node.textContent.replace(/skyexch\.vip/g, 'skyexchangepro.com');
+                node.textContent = node.textContent.replace(/skyexch\.vip/g, FOOTER_DOMAIN);
               }
             }
           });

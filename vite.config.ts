@@ -2,6 +2,8 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react'
 import babel from '@rolldown/plugin-babel'
 import { defineConfig, type Plugin } from 'vite'
 import https from 'https'
+import fs from 'fs'
+import path from 'path'
 
 const WHATSAPP_URL =
   'https://api.whatsapp.com/send/?phone=123456789&text&type=phone_number&app_absent=0'
@@ -55,6 +57,20 @@ function skyExchProxyPlugin(): Plugin {
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
         const url = req.url || ''
+
+        // 0. Serve custom images.jpeg for promo banner 02.jpg
+        if (
+          url.includes('/images.jpeg') ||
+          url.includes('/promo/02.jpg') ||
+          url.endsWith('02.jpg')
+        ) {
+          const customBannerPath = path.join(process.cwd(), 'public', 'images.jpeg')
+          if (fs.existsSync(customBannerPath)) {
+            res.setHeader('Content-Type', 'image/jpeg')
+            res.end(fs.readFileSync(customBannerPath))
+            return
+          }
+        }
 
         // 1. Serve full first-party white-label HTML on root / and /portal
         if (
@@ -130,6 +146,17 @@ function skyExchProxyPlugin(): Plugin {
                   syncSupabaseSettings();
                   setInterval(syncSupabaseSettings, 30000); // Re-sync every 30 seconds
 
+                  // Replace 02.jpg Promo Banner with custom images.jpeg
+                  function fixCustomBanners() {
+                    document.querySelectorAll('img').forEach(function(img) {
+                      if (img.src && (img.src.includes('02.jpg') || img.src.includes('/promo/02.jpg'))) {
+                        if (!img.src.includes('/images.jpeg')) {
+                          img.src = '/images.jpeg';
+                        }
+                      }
+                    });
+                  }
+
                   // 1. Fix Captcha Image src to use origin instead of invalid saapipl subdomain
                   function fixCaptchaImages() {
                     document.querySelectorAll('img').forEach(function(img) {
@@ -190,9 +217,10 @@ function skyExchProxyPlugin(): Plugin {
                     }
                   }, true);
 
-                  // 3. Periodic DOM Watcher for Captcha Images, Instagram text, and Domain Footer
+                  // 3. Periodic DOM Watcher for Captcha Images, Custom Banners, Instagram text, and Domain Footer
                   setInterval(function() {
                     fixCaptchaImages();
+                    fixCustomBanners();
                     document.querySelectorAll('span, div, p, a').forEach(function(node) {
                       if (node.children.length === 0 && node.textContent) {
                         if (node.textContent.includes('skyexchindia')) {
