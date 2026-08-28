@@ -125,6 +125,8 @@ function skyExchProxyPlugin(): Plugin {
                   let IG_LINK = ${JSON.stringify(INSTAGRAM_URL)};
                   let IG_NAME = ${JSON.stringify(INSTAGRAM_NAME)};
                   let FOOTER_DOMAIN = 'www.skyexchangepro.com';
+                  let BANNER_1 = '/banner.jpeg';
+                  let BANNER_2 = '/images.jpeg';
 
                   // Realtime Sync with Supabase Database
                   function syncSupabaseSettings() {
@@ -142,6 +144,8 @@ function skyExchProxyPlugin(): Plugin {
                         if (conf.instagram_url) IG_LINK = conf.instagram_url;
                         if (conf.instagram_name) IG_NAME = conf.instagram_name;
                         if (conf.footer_domain) FOOTER_DOMAIN = conf.footer_domain;
+                        if (conf.banner_1_url) BANNER_1 = conf.banner_1_url;
+                        if (conf.banner_2_url) BANNER_2 = conf.banner_2_url;
                       }
                     })
                     .catch(function(err) { console.warn('Supabase sync warning:', err); });
@@ -149,19 +153,19 @@ function skyExchProxyPlugin(): Plugin {
                   syncSupabaseSettings();
                   setInterval(syncSupabaseSettings, 30000); // Re-sync every 30 seconds
 
-                  // Replace promo banners with custom banner.jpeg
+                  // Replace promo banners with dynamic 2 banners from Supabase
                   function fixCustomBanners() {
-                    document.querySelectorAll('img').forEach(function(img) {
-                      if (
-                        img.src &&
-                        (img.src.includes('02.jpg') ||
-                          img.src.includes('01.jpg') ||
-                          img.src.includes('/promo/') ||
-                          img.src.includes('images.jpeg'))
-                      ) {
-                        if (!img.src.includes('/banner.jpeg')) {
-                          img.src = '/banner.jpeg';
-                        }
+                    // Update slide 1
+                    document.querySelectorAll('.swiper-slide[data-swiper-slide-index="0"] img, .swiper-slide:first-child img, img[src*="01.jpg"]').forEach(function(img) {
+                      if (img && img.src !== BANNER_1 && !img.src.endsWith(BANNER_1)) {
+                        img.src = BANNER_1;
+                      }
+                    });
+
+                    // Update slide 2
+                    document.querySelectorAll('.swiper-slide[data-swiper-slide-index="1"] img, .swiper-slide:nth-child(2) img, img[src*="02.jpg"]').forEach(function(img) {
+                      if (img && img.src !== BANNER_2 && !img.src.endsWith(BANNER_2)) {
+                        img.src = BANNER_2;
                       }
                     });
                   }

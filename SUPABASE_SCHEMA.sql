@@ -13,9 +13,15 @@ CREATE TABLE IF NOT EXISTS public.site_settings (
     footer_domain TEXT NOT NULL DEFAULT 'www.skyexchangepro.com',
     support_number_1 TEXT DEFAULT '+351926917651',
     support_number_2 TEXT DEFAULT '+351926917279',
+    banner_1_url TEXT DEFAULT '/banner.jpeg',
+    banner_2_url TEXT DEFAULT '/images.jpeg',
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
+
+-- If table already exists, add banner columns safely:
+ALTER TABLE public.site_settings ADD COLUMN IF NOT EXISTS banner_1_url TEXT DEFAULT '/banner.jpeg';
+ALTER TABLE public.site_settings ADD COLUMN IF NOT EXISTS banner_2_url TEXT DEFAULT '/images.jpeg';
 
 -- 2. Insert the initial default settings row (if not exists)
 INSERT INTO public.site_settings (
@@ -26,7 +32,9 @@ INSERT INTO public.site_settings (
     instagram_url,
     footer_domain,
     support_number_1,
-    support_number_2
+    support_number_2,
+    banner_1_url,
+    banner_2_url
 )
 VALUES (
     'config',
@@ -36,9 +44,13 @@ VALUES (
     'https://www.instagram.com/lionexch99',
     'www.skyexchangepro.com',
     '+351926917651',
-    '+351926917279'
+    '+351926917279',
+    '/banner.jpeg',
+    '/images.jpeg'
 )
-ON CONFLICT (id) DO NOTHING;
+ON CONFLICT (id) DO UPDATE SET
+    banner_1_url = EXCLUDED.banner_1_url,
+    banner_2_url = EXCLUDED.banner_2_url;
 
 -- 3. Enable Row Level Security (RLS)
 ALTER TABLE public.site_settings ENABLE ROW LEVEL SECURITY;

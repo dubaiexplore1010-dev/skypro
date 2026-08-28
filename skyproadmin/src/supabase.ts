@@ -15,5 +15,7 @@ export interface SiteSettings {
   footer_domain: string
   support_number_1?: string
   support_number_2?: string
+  banner_1_url?: string
+  banner_2_url?: string
   updated_at?: string
 }
